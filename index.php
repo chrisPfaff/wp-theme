@@ -1,21 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  <h1>This is our theme</h1>
+  <h1><?php blogInfo('name');?></h1>
+  <p>Students</p>
+  <ul>
   <?php
-    function myFirstFunction($str, $var) {
-      echo $str . $var;
-    }
-
-    myFirstFunction('<p>Hi, my name is chris and my fav color is</p>', "<p> red </p>");
-    myFirstFunction('<p>Hi, my name is chris and my fav color is</p>', "<p> grey</p>");
+  //! wordpress uses while loops;
+  $students = array("chris", "greg", "rosie", "cori", "copper");
+  $count = 0;
+  while($count < count($students)) {
+    echo "<li> My name is $students[$count] </li>";
+    $count++;
+  }
+  ?>
+  </ul>
+  <?php
+    while(have_posts()) {
+      the_post(); ?>
+      <h2><?php the_title(); ?></h2>
+    <?php }
   ?>
 </body>
 </html>
